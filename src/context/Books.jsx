@@ -8,7 +8,7 @@ const Books = () =>{
     const [allBooks,setAllBooks] = useState();
 
 
-let myInfo;
+let myInfo=null;
 
  useEffect( ()=>{
 
@@ -49,8 +49,8 @@ console.log("myInfo2:"+myInfo);
 
     return(
 <>
-        {/* <ul>{allBooks}</ul> */}
-        <ul>{[allBooks].map((item)=>{<li>${item}</li>})}</ul>
+        {/* <ul>{ allBooks[0].title}</ul> */}
+        <ul>{myInfo || allBooks.map((item)=>{ return <li>{item.title}</li>})}</ul>
 
 
 
