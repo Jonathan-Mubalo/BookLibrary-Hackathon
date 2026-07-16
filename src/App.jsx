@@ -16,16 +16,18 @@ function App() {
   return (
     <>
       <div className='App'>
+
         <GetAllBooks>
-          <Create />
+          <GetAllBooks />
           <Get />
+          <Create />
           <Update />
           <Delete />
         </GetAllBooks>
-        <ThemeContextFunction>
+        {/* <ThemeContextFunction>
           <Navbar />
           <Booklist />
-        </ThemeContextFunction>
+        </ThemeContextFunction> */}
       </div>
     </>
   )
