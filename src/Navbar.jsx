@@ -1,15 +1,28 @@
 import React from 'react';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Link,
+  useNavigate,
+  Outlet
+} from "react-router-dom";
+
 
 const Navbar = () => {
     return (
+        <>
+        <Router>
         <nav>
-            <h1>Context App</h1>
             <ul>
-                <li><a>Home</a></li>
-                <li><a>About</a></li>
-                <li><a>Contact</a></li>
+                <li><Link className="my-nav" to="/">View All books</Link></li>
+                <li><Link className="my-nav" to="/Create">Add a book</Link></li>
+                <li><Link className="my-nav" to="/Update">Update a book</Link></li>
+                <li><Link className="my-nav" to="/Delete">Delete a book</Link></li>
             </ul>
         </nav>
+        </Router>
+        </>
     );
 }
 
