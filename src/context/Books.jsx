@@ -67,7 +67,7 @@ const GetAllBooks = (props) => {
         fetch(`http://localhost:3000/books/${bookId}`, {
             method: 'PUT',
             headers: {
-                "Content-Type": "application.json",
+                "Content-Type": "application/json",
             },
             body: JSON.stringify({
                 author: `${newAuthor}`,
