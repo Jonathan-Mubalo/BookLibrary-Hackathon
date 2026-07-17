@@ -5,29 +5,49 @@ export const ContextProvider = createContext();
 const GetAllBooks = (props) => {
 
     const [allBooks, setAllBooks] = useState(null);
-    const [count, setCount] = useState(null);
-    let myCount=0;
+    const [count, setCount] = useState(13);
 
-    useEffect(() => {
-        // Async function to download a file
-        async function loadBooks(file) {
-            const response = await fetch(file);
-            myDisplayer(await response.text());
-        }
+        useEffect(() => {
+            // Async function to download a file
+            async function loadBooks(file) {
+                const response = await fetch(file);
+                myDisplayer(await response.text());
+            }
 
-        // Call the async function
-        loadBooks(`http://localhost:3000/books`);
+            // Call the async function
+            loadBooks(`http://localhost:3000/books`);
 
-        // Function to display any text
-        function myDisplayer(text) {
-            console.log("my text is:" + text);
-            setAllBooks(JSON.parse(text));
-            console.log("myInfo1:" + allBooks);
-        }
-        console.log("myInfo:" + allBooks);
-    }, [])
+            // Function to display any text
+            function myDisplayer(text) {
+                console.log("my text is:" + text);
+                setAllBooks(JSON.parse(text));
+                console.log("myInfo1:" + allBooks);
+            }
+            console.log("myInfo:" + allBooks);
+        }, [count])
 
-    const createBook = (newTitle,newAuthor) => {
+//     const getFunction = () => {
+// useEffect(() => {
+//             // Async function to download a file
+//             async function loadBooks(file) {
+//                 const response = await fetch(file);
+//                 myDisplayer(await response.text());
+//             }
+
+//             // Call the async function
+//             loadBooks(`http://localhost:3000/books`);
+
+//             // Function to display any text
+//             function myDisplayer(text) {
+//                 console.log("my text is:" + text);
+//                 setAllBooks(JSON.parse(text));
+//                 console.log("myInfo1:" + allBooks);
+//             }
+//             console.log("myInfo:" + allBooks);
+//         }, [])
+//     };
+
+    const createBook = (newTitle, newAuthor) => {
         fetch("http://localhost:3000/books", {
             method: "POST",
             headers: {
@@ -38,13 +58,13 @@ const GetAllBooks = (props) => {
                 title: `${newTitle}`,
             })
         })
-        // let newCount = myCount+1;
-        setAllBooks( [...allBooks])
-        // setCount( newCount )
+        setAllBooks([...allBooks]);
+        setCount(count+1);
+        // getFunction();
     };
 
-    const updateBook = (newTitle,newAuthor) => {
-        fetch("http://localhost:3000/books/bookId", {
+    const updateBook = (newTitle, newAuthor, bookId) => {
+        fetch(`http://localhost:3000/books/${bookId}`, {
             method: 'PUT',
             headers: {
                 "Content-Type": "application.json",
@@ -54,16 +74,19 @@ const GetAllBooks = (props) => {
                 title: `${newTitle}`,
             })
         })
+        setAllBooks([...allBooks]);
+        setCount(count+1);
+        // getFunction();
     }
 
-    const deleteBook = (bookId) =>{
-        fetch(`http://localhost:3000/books/${bookId}`,{
+    const deleteBook = (bookId) => {
+        fetch(`http://localhost:3000/books/${bookId}`, {
             method: "DELETE",
         })
         setAllBooks([...allBooks])
+        setCount(count-1);
+        // getFunction();
     }
-    // console.log("myInfo1:" + ,allBooks[0].title);
-
     console.log("allBooks now2 :" + allBooks)
     console.log("allBooks data type:" + typeof (allBooks))
     console.log("myInfo2:" + allBooks);
@@ -72,7 +95,7 @@ const GetAllBooks = (props) => {
     return (
         <>
 
-            <ContextProvider.Provider value={{ allBooks, createBook, updateBook, deleteBook}}>
+            <ContextProvider.Provider value={{ allBooks, createBook, updateBook, deleteBook }}>
                 {props.children}
             </ContextProvider.Provider>
         </>

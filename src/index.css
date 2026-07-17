@@ -42,5 +42,29 @@ margin-top: 0px;
 
 .my-nav{
 
-  color:rgb(32, 113, 138);
+  color:rgb(236, 230, 230);
+  font-size: large;
+  text-decoration: none;
+}
+
+/* INPUTS AND BUTTONS */
+
+input{
+  padding:10px 5px;
+  margin:2px;
+  border-radius: 10px;
+  background-color: lightgray;
+}
+
+button{
+  padding:8px 5px;
+  margin:2px;
+  border-radius: 15px;
+  background-color: rgb(32, 32, 32);
+  color: white;
+}
+
+
+.hide-element{
+  display:none;
 }
