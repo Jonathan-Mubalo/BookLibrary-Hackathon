@@ -65,6 +65,10 @@ button{
 }
 
 
-.hide-element{
-  display:none;
+dialog{
+  background-color: rgb(240, 248, 255, 0.8);
+  margin: auto;
+  width:90%;
+  border-radius: 10px;
+  border: 3px solid black;
 }
