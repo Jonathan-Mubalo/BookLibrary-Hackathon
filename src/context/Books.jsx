@@ -26,27 +26,6 @@ const GetAllBooks = (props) => {
             console.log("myInfo:" + allBooks);
         }, [count])
 
-//     const getFunction = () => {
-// useEffect(() => {
-//             // Async function to download a file
-//             async function loadBooks(file) {
-//                 const response = await fetch(file);
-//                 myDisplayer(await response.text());
-//             }
-
-//             // Call the async function
-//             loadBooks(`http://localhost:3000/books`);
-
-//             // Function to display any text
-//             function myDisplayer(text) {
-//                 console.log("my text is:" + text);
-//                 setAllBooks(JSON.parse(text));
-//                 console.log("myInfo1:" + allBooks);
-//             }
-//             console.log("myInfo:" + allBooks);
-//         }, [])
-//     };
-
     const createBook = (newTitle, newAuthor) => {
         fetch("http://localhost:3000/books", {
             method: "POST",
@@ -60,7 +39,6 @@ const GetAllBooks = (props) => {
         })
         setAllBooks([...allBooks]);
         setCount(count+1);
-        // getFunction();
     };
 
     const updateBook = (newTitle, newAuthor, bookId) => {
@@ -76,7 +54,6 @@ const GetAllBooks = (props) => {
         })
         setAllBooks([...allBooks]);
         setCount(count+1);
-        // getFunction();
     }
 
     const deleteBook = (bookId) => {
@@ -85,8 +62,8 @@ const GetAllBooks = (props) => {
         })
         setAllBooks([...allBooks])
         setCount(count-1);
-        // getFunction();
     }
+
     console.log("allBooks now2 :" + allBooks)
     console.log("allBooks data type:" + typeof (allBooks))
     console.log("myInfo2:" + allBooks);

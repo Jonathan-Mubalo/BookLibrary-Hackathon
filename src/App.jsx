@@ -9,10 +9,12 @@ import Get from "./CRUD/Get.jsx"
 import Update from "./CRUD/Update.jsx"
 import Delete from "./CRUD/Delete.jsx";
 import {
-  BrowserRouter as Router,
+ BrowserRouter as Router,
   Routes,
   Route,
   Link,
+  useNavigate,
+  Outlet
 } from "react-router-dom";
 
 
@@ -23,8 +25,8 @@ function App() {
    
       <div className='App'>
 
-        <GetAllBooks>
           <Navbar />
+        <GetAllBooks>
            <Router>
           <Routes>
               <Route path="/" element={<Get />} />
